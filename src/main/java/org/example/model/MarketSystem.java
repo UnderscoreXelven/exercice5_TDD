@@ -1,7 +1,7 @@
 package org.example.model;
 
 public class MarketSystem {
-    public static Produit updateProduit(Produit produit) {
+    public static void updateProduit(Produit produit) {
         produit.setSellIn(produit.getSellIn() - 1);
 
 
@@ -38,6 +38,5 @@ public class MarketSystem {
                 produit.setQuality(produit.getQuality() - 1);
             }
         }
-        return produit;
     }
 }
