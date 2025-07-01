@@ -18,72 +18,87 @@ public class ProduitTest {
 
     @Test
     public void whenSellIn_Zero_thenQualityDecrease_TwoTimesFaster(){
-        // Arrange
+        //Arrange
         produit.setSellIn(0);
         produit.setQuality(10);
 
-        // Act
+        //Act
         MarketSystem.updateProduit(produit);
 
-        // Assert
+        //Assert
         Assertions.assertEquals(8, produit.getQuality());
     }
 
     @Test
     public void quality_ShouldNeverBeNegative(){
-        // Arrange
+        //Arrange
         produit.setSellIn(0);
         produit.setQuality(0);
 
-        // Act
+        //Act
         MarketSystem.updateProduit(produit);
 
-        // Assert
+        //Assert
         Assertions.assertEquals(0, produit.getQuality());
     }
 
     @Test
     public void quality_ShouldNeverBeMoreThan50(){
-        // Arrange
+        //Arrange
         produit.setSellIn(0);
         produit.setQuality(50);
         produit.setName("brie vieilli");
         produit.setType("produit laitier");
 
-        // Act
+        //Act
         MarketSystem.updateProduit(produit);
 
-        // Assert
+        //Assert
         Assertions.assertEquals(50, produit.getQuality());
     }
 
     @Test
     public void whenProductName_brieVieilli_thenQuality_Increase(){
-        // Arrange
+        //Arrange
         produit.setSellIn(10);
         produit.setQuality(20);
         produit.setName("brie vieilli");
         produit.setType("produit laitier");
 
-        // Act
+        //Act
         MarketSystem.updateProduit(produit);
 
-        // Assert
+        //Assert
         Assertions.assertEquals(21, produit.getQuality());
     }
 
     @Test
     public void whenProductType_ProduitLaitier_thenQualityDecrease_TwoTimesFaster(){
-        // Arrange
+        //Arrange
         produit.setSellIn(10);
         produit.setQuality(20);
         produit.setName("brie");
         produit.setType("produit laitier");
 
-        // Act
+        //Act
         MarketSystem.updateProduit(produit);
 
-        // Assert
+        //Assert
         Assertions.assertEquals(18, produit.getQuality());
+    }
+
+    @Test
+    public void whenProductType_ProduitLaitier_AndSellIn_0_thenQualityDecrease_FourthTimesFaster(){
+        //Arrange
+        produit.setSellIn(0);
+        produit.setQuality(20);
+        produit.setName("brie");
+        produit.setType("produit laitier");
+
+        //Act
+        MarketSystem.updateProduit(produit);
+
+        //Assert
+        Assertions.assertEquals(16, produit.getQuality());
     }
 }
