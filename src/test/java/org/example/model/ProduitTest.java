@@ -88,7 +88,7 @@ public class ProduitTest {
     }
 
     @Test
-    public void whenProductType_ProduitLaitier_AndSellIn_0_thenQualityDecrease_FourthTimesFaster(){
+    public void whenProductType_ProduitLaitier_AndSellIn_0_thenQualityDecrease_FourTimesFaster(){
         //Arrange
         produit.setSellIn(0);
         produit.setQuality(20);
